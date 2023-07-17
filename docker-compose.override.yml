@@ -1,0 +1,19 @@
+version: '3.4'
+
+services:
+  addressbook:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "5269:80"
+    depends_on:
+      - addressbookdb
+
+  addressbookdb:
+    container_name: addressbookdb
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    ports:
+      - "1433:1433"
+    environment:
+      SA_PASSWORD: "43mYYAaPDzzC#"
+      ACCEPT_EULA: "Y"
